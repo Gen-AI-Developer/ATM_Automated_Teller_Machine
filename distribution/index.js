@@ -40,14 +40,22 @@ async function ATM_Operations(pass) {
                     message: chalk.black.bgWhite.bold('Enter The Fund to WithDraw')
                 }
             ]);
-            Userdetial.balance = Userdetial.balance - parseInt(answer.fundWithDraw);
-            // console.log(`${typeof (Userdetial.balance)} ${typeof (answer.fundWithDraw)}`)
-            console.log(chalk.black.bgBlack.bold(`-------------------------------------------------------------`));
-            console.log(chalk.black.bgWhite.bold(`-Your Amount ${answer.fundWithDraw} is successfuly withdrawed--`));
-            console.log(chalk.black.bgGreen.bold(`-Your Remaining Amount is ${Userdetial.balance} `));
-            console.log(chalk.black.bgRed.bold(`- Pleas collect your Amount and Close Your Account`));
-            console.log(chalk.black.bgBlack.bold(`-------------------------------------------------------------`));
-            ATM_Operations(userloggedin);
+            if (Userdetial.balance > parseInt(answer.fundWithDraw)) {
+                Userdetial.balance = Userdetial.balance - parseInt(answer.fundWithDraw);
+                // console.log(`${typeof (Userdetial.balance)} ${typeof (answer.fundWithDraw)}`)
+                console.log(chalk.black.bgBlack.bold(`-------------------------------------------------------------`));
+                console.log(chalk.black.bgWhite.bold(`-Your Amount ${answer.fundWithDraw} is successfuly withdrawed--`));
+                console.log(chalk.black.bgGreen.bold(`-Your Remaining Amount is ${Userdetial.balance} `));
+                console.log(chalk.black.bgRed.bold(`- Pleas collect your Amount and Close Your Account`));
+                console.log(chalk.black.bgBlack.bold(`-------------------------------------------------------------`));
+                ATM_Operations(userloggedin);
+            }
+            else {
+                console.log(chalk.black.bgBlack.bold(`-------------------------------------------------------------`));
+                console.log(chalk.black.bgRed.bold(` -- Unsufficient Funds -- \n please try again`));
+                console.log(chalk.black.bgBlack.bold(`-------------------------------------------------------------`));
+                ATM_Operations(userloggedin);
+            }
         }
     }
 }
