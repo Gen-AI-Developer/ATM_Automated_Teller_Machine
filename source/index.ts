@@ -75,7 +75,7 @@ async function ATM_Login() {
 
         },
         {
-            type: "inputpassword",
+            type: "password",
             name: "accountpassword",
             message: chalk.bgYellowBright.whiteBright.bold('Please Enter Your Account Password/Pin >> ')
 
