@@ -73,11 +73,17 @@ async function ATM_Login() {
             name: "accountNoinput",
             message: chalk.bgYellowBright.whiteBright.bold('Please Enter Your Account Number >> ')
 
+        },
+        {
+            type: "inputpassword",
+            name: "accountpassword",
+            message: chalk.bgYellowBright.whiteBright.bold('Please Enter Your Account Password/Pin >> ')
+
         }
     ])
 
     if (trying < 3) {
-        if (answer.accountNoinput == Userdetial.accoutnNo) {
+        if (answer.accountNoinput == Userdetial.accoutnNo && parseInt(answer.inputpassword) == Userdetial.pin) {
             userloggedin = true
             trying++
             console.log(chalk.black.bgBlack.bold(`-------------------------------------------------------------`))
